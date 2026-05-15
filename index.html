@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahathru | Video Editor & Tech Creator</title>
+    <title>Mahathru's Portfolio</title>
     
     <!-- Google Fonts: Space Grotesk for the bold headers, Inter for body -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -249,8 +249,8 @@
                 
                 <!-- Text Content -->
                 <div class="w-full lg:w-[60%] z-10 pt-4 text-center lg:text-left">
-                    <h1 class="text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.5rem] xl:text-[4rem] font-display font-bold leading-[1.1] tracking-tight text-brand-black uppercase mb-6 opacity-0 animate-slide-up" style="animation-delay: 0.2s;">
-                        HI, I'M MAHATHRU.<br>
+                    <h1 class="text-[1.8rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.4rem] font-display font-bold leading-[1.25] tracking-tight text-brand-black uppercase mb-8 opacity-0 animate-slide-up" style="animation-delay: 0.2s;">
+                        HI, I'M <span class="text-brand-orange">MAHATHRU</span>.<br>
                         A VIDEO EDITOR <span class="star-icon hero-star animate-spin-slow"></span><br>
                         BLENDING TECH & STORYTELLING<br>
                         BASED IN <span class="text-brand-orange">VIJAYAWADA</span>
@@ -279,18 +279,19 @@
                 <!-- Image Area -->
                 <div class="w-full lg:w-[40%] flex justify-center lg:justify-end relative mt-8 lg:mt-0 h-full min-h-[350px] sm:min-h-[400px] lg:min-h-[500px] items-center">
                     
-                    <!-- Background star graphic watermark -->
-                    <div class="absolute w-[80%] max-w-[400px] aspect-square top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 opacity-0 animate-fade-in" style="animation-delay: 0.5s;">
-                        <!-- Using the decorative star shape behind the portrait, styled to be smaller and subtle -->
-                        <div class="w-full h-full bg-transparent opacity-60" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='none' stroke='%23F04C35' stroke-width='4' d='M45,0 L55,0 L55,35 L80,10 L87,17 L62,42 L97,42 L97,52 L62,52 L87,77 L80,84 L55,59 L55,94 L45,94 L45,59 L20,84 L13,77 L38,52 L3,52 L3,42 L38,42 L13,17 L20,10 L45,35 Z'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: center; background-size: contain;"></div>
-                    </div>
-
                     <!-- Image Container: Professional Circle Frame -->
-                    <div class="relative w-full max-w-[320px] sm:max-w-[380px] aspect-square rounded-full border-[3px] border-brand-black bg-white overflow-hidden flex justify-center z-10 opacity-0 animate-scale-in transition-transform duration-300 hover:-translate-y-2 hover:shadow-[10px_10px_0_0_#F04C35] shadow-[6px_6px_0_0_#111111] md:shadow-[8px_8px_0_0_#111111]" style="animation-delay: 0.6s;">
+                    <div class="relative w-full max-w-[320px] sm:max-w-[380px] aspect-square rounded-full border-[3px] border-brand-black bg-white overflow-hidden flex justify-center z-10 opacity-0 animate-scale-in transition-transform duration-300 hover:-translate-y-2 hover:shadow-[10px_10px_0_0_#F04C35] shadow-[6px_6px_0_0_#111111] md:shadow-[8px_8px_0_0_#111111]" style="animation-delay: 0.5s;">
+                        
+                        <!-- Background orange dotted pattern (Moved INSIDE the circle) -->
+                        <div class="absolute w-[110%] sm:w-[120%] aspect-square top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0">
+                            <!-- Dotted grid design behind the portrait -->
+                            <div class="w-full h-full bg-transparent opacity-80" style="background-image: radial-gradient(circle, #F04C35 2.5px, transparent 2.5px); background-size: 16px 16px; background-position: center;"></div>
+                        </div>
+
                         <!-- The profile image: scaled and shifted to crop perfectly at the waist -->
                         <img src="Mahathru.png" 
                              alt="Mahathru Reddipalli" 
-                             class="absolute top-[4%] left-1/2 -translate-x-1/2 w-[125%] max-w-none h-auto object-contain grayscale">
+                             class="absolute top-[4%] left-1/2 -translate-x-1/2 w-[125%] max-w-none h-auto object-contain grayscale z-10">
                     </div>
                 </div>
             </div>
@@ -395,8 +396,10 @@
             <!-- Project 1 -->
             <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mb-20 lg:mb-32 reveal">
                 <div class="w-full lg:w-1/2">
-                    <div class="aspect-[4/3] bg-gray-200 overflow-hidden group border-2 border-transparent hover:border-brand-black transition-colors">
-                        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=1000&auto=format&fit=crop" alt="College Reel" class="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105">
+                    <div class="relative aspect-[4/3] bg-gray-200 overflow-hidden group border-2 border-transparent hover:border-brand-black transition-colors">
+                        <!-- Black Tint Overlay -->
+                        <div class="absolute inset-0 bg-black/60 group-hover:bg-black/20 transition-colors duration-700 z-10 pointer-events-none"></div>
+                        <img src="Collegereel.png" alt="College Reel" class="w-full h-full object-cover object-center grayscale transition-transform duration-700 group-hover:scale-105 relative z-0">
                     </div>
                 </div>
                 <div class="w-full lg:w-1/2 lg:pl-10">
@@ -407,15 +410,17 @@
                     <p class="text-gray-600 mb-6 lg:mb-8 text-sm md:text-base leading-relaxed">
                         Cinematic college edit featuring smooth, dynamic transitions and strong visual storytelling.
                     </p>
-                    <a href="#" class="font-display font-bold text-sm border-b-2 border-brand-black pb-1 hover:text-brand-orange hover:border-brand-orange transition-colors uppercase tracking-wide">Watch Video</a>
+                    <a href="https://photos.app.goo.gl/mgYcaC5RhTYxwZfe8" target="_blank" rel="noopener noreferrer" class="font-display font-bold text-sm border-b-2 border-brand-black pb-1 hover:text-brand-orange hover:border-brand-orange transition-colors uppercase tracking-wide">Watch Video</a>
                 </div>
             </div>
 
             <!-- Project 2 (Reversed layout) -->
             <div class="flex flex-col lg:flex-row-reverse items-center gap-8 lg:gap-12 mb-20 lg:mb-32 reveal">
                 <div class="w-full lg:w-1/2">
-                    <div class="aspect-[4/3] bg-gray-200 overflow-hidden group border-2 border-transparent hover:border-brand-black transition-colors">
-                        <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1000&auto=format&fit=crop" alt="Montage Edit" class="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105">
+                    <div class="relative aspect-[4/3] bg-gray-200 overflow-hidden group border-2 border-transparent hover:border-brand-black transition-colors">
+                        <!-- Black Tint Overlay -->
+                        <div class="absolute inset-0 bg-black/60 group-hover:bg-black/20 transition-colors duration-700 z-10 pointer-events-none"></div>
+                        <img src="montage.png" alt="Montage Edit" class="w-full h-full object-cover object-center grayscale transition-transform duration-700 group-hover:scale-105 relative z-0">
                     </div>
                 </div>
                 <div class="w-full lg:w-1/2 lg:pr-10 lg:text-right">
@@ -427,7 +432,7 @@
                         <p class="text-gray-600 mb-6 lg:mb-8 text-sm md:text-base leading-relaxed text-left lg:text-right">
                             High-energy, beat-sync montage perfectly timed to music, focused on audience engagement.
                         </p>
-                        <a href="#" class="font-display font-bold text-sm border-b-2 border-brand-black pb-1 hover:text-brand-orange hover:border-brand-orange transition-colors uppercase tracking-wide">Watch Video</a>
+                        <a href="https://photos.app.goo.gl/YJYHUoGXWFAmy1w2A" target="_blank" rel="noopener noreferrer" class="font-display font-bold text-sm border-b-2 border-brand-black pb-1 hover:text-brand-orange hover:border-brand-orange transition-colors uppercase tracking-wide">Watch Video</a>
                     </div>
                 </div>
             </div>
@@ -435,8 +440,10 @@
             <!-- Project 3 -->
             <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 reveal">
                 <div class="w-full lg:w-1/2">
-                    <div class="aspect-[4/3] bg-gray-200 overflow-hidden group border-2 border-transparent hover:border-brand-black transition-colors">
-                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop" alt="Instagram Reel" class="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105">
+                    <div class="relative aspect-[4/3] bg-gray-200 overflow-hidden group border-2 border-transparent hover:border-brand-black transition-colors">
+                        <!-- Black Tint Overlay -->
+                        <div class="absolute inset-0 bg-black/60 group-hover:bg-black/20 transition-colors duration-700 z-10 pointer-events-none"></div>
+                        <img src="igreel.png" alt="Instagram Reel" class="w-full h-full object-cover object-center grayscale transition-transform duration-700 group-hover:scale-105 relative z-0">
                     </div>
                 </div>
                 <div class="w-full lg:w-1/2 lg:pl-10">
@@ -447,8 +454,18 @@
                     <p class="text-gray-600 mb-6 lg:mb-8 text-sm md:text-base leading-relaxed">
                         Trend-focused short-form content strategically optimized for maximum audience retention and impact.
                     </p>
-                    <a href="#" class="font-display font-bold text-sm border-b-2 border-brand-black pb-1 hover:text-brand-orange hover:border-brand-orange transition-colors uppercase tracking-wide">Watch Video</a>
+                    <a href="https://photos.app.goo.gl/cfRKXir2C8FQDwtt6" target="_blank" rel="noopener noreferrer" class="font-display font-bold text-sm border-b-2 border-brand-black pb-1 hover:text-brand-orange hover:border-brand-orange transition-colors uppercase tracking-wide">Watch Video</a>
                 </div>
+            </div>
+
+            <!-- See More Link -->
+            <div class="text-center mt-20 lg:mt-28 reveal">
+                <p class="text-brand-black font-display font-bold text-lg md:text-xl">
+                    For more of my works visit 
+                    <a href="https://www.instagram.com/dhanekula_panchayati/" target="_blank" rel="noopener noreferrer" class="text-brand-orange hover:text-brand-black transition-colors border-b-2 border-brand-orange hover:border-brand-black pb-1 ml-1 inline-flex items-center">
+                        <i class="fab fa-instagram mr-2"></i>dhanekula_panchayati
+                    </a>
+                </p>
             </div>
 
         </div>
