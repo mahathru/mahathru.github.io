@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahathru's Portfolio</title>
+    
+    <!-- Google Fonts: Space Grotesk for the bold headers, Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            orange: '#F04C35',
+                            black: '#111111',
+                            bg: '#F4F4F4',
+                        }
+                    },
+                    animation: {
+                        'marquee': 'marquee 25s linear infinite',
+                        'spin-slow': 'spin 8s linear infinite',
+                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                        'scale-in': 'scaleIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.95)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F4F4F4;
+            color: #111111;
+        }
+
+        /* Scroll reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        
+        .marquee-container {
+            width: 100vw;
+            overflow: hidden;
+            background: #111111;
+            color: white;
+            padding: 1.25rem 0;
+            position: relative;
+            transform: rotate(-3deg);
+            margin-top: 2vh;
+            margin-bottom: 0;
+            width: 110vw;
+            left: -5vw;
+            z-index: 40;
+        }
+
+        .marquee-content {
+            display: flex;
+            white-space: nowrap;
+            width: fit-content;
+        }
+        
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .btn-outline {
+            border: 1px solid #111111;
+            padding: 0.75rem 2rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background: #111111;
+            color: white;
+        }
+
+        .service-card {
+            border: 2px solid #111111;
+            padding: 2rem 1.5rem;
+            transition: transform 0.3s ease;
+            background: white;
+        }
+        @media (min-width: 768px) {
+            .service-card {
+                padding: 3rem 2rem;
+            }
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* The custom minimalist 'mhr.' brand shape used for main logos */
+        .brand-icon {
+            display: inline-block;
+            background-color: #F04C35;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 55'%3E%3Cg fill='none' stroke='%23000' stroke-width='10' stroke-linecap='square'%3E%3Cpath d='M10,50 V25 A13,13 0 0,1 36,25 V50 M36,25 A13,13 0 0,1 62,25 V50' /%3E%3Cpath d='M80,5 V50 M80,25 A13,13 0 0,1 106,25 V50' /%3E%3Cpath d='M124,50 V25 A13,13 0 0,1 150,25' /%3E%3C/g%3E%3Crect x='162' y='40' width='10' height='10' fill='%23000' /%3E%3C/svg%3E") no-repeat center / contain;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 55'%3E%3Cg fill='none' stroke='%23000' stroke-width='10' stroke-linecap='square'%3E%3Cpath d='M10,50 V25 A13,13 0 0,1 36,25 V50 M36,25 A13,13 0 0,1 62,25 V50' /%3E%3Cpath d='M80,5 V50 M80,25 A13,13 0 0,1 106,25 V50' /%3E%3Cpath d='M124,50 V25 A13,13 0 0,1 150,25' /%3E%3C/g%3E%3Crect x='162' y='40' width='10' height='10' fill='%23000' /%3E%3C/svg%3E") no-repeat center / contain;
+        }
+
+        /* The specific multi-pointed star shape for text, banners, and decoration */
+        .star-icon {
+            display: inline-block;
+            background-color: #F04C35;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M45,0 L55,0 L55,35 L80,10 L87,17 L62,42 L97,42 L97,52 L62,52 L87,77 L80,84 L55,59 L55,94 L45,94 L45,59 L20,84 L13,77 L38,52 L3,52 L3,42 L38,42 L13,17 L20,10 L45,35 Z'/%3E%3C/svg%3E") no-repeat center / contain;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M45,0 L55,0 L55,35 L80,10 L87,17 L62,42 L97,42 L97,52 L62,52 L87,77 L80,84 L55,59 L55,94 L45,94 L45,59 L20,84 L13,77 L38,52 L3,52 L3,42 L38,42 L13,17 L20,10 L45,35 Z'/%3E%3C/svg%3E") no-repeat center / contain;
+        }
+        
+        .hero-star {
+            width: 6vw;
+            max-width: 42px;
+            min-width: 24px;
+            height: 6vw;
+            max-height: 42px;
+            min-height: 24px;
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 5px;
+        }
+
+        .section-header-star {
+            width: 32px;
+            height: 32px;
+            margin: 0 auto 1.5rem auto;
+            display: block;
+        }
+
+        /* Specific styling for the strikethrough text to match the design */
+        .strike-text {
+            position: relative;
+            display: inline-block;
+        }
+        .strike-text::after {
+            content: '';
+            position: absolute;
+            left: -5%;
+            top: 50%;
+            width: 110%;
+            height: 4px;
+            background-color: #111111;
+            transform: translateY(-50%);
+        }
+
+        .nav-link {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden selection:bg-brand-orange selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="w-full py-4 lg:py-6 z-50 absolute top-0 opacity-0 animate-fade-in" style="animation-delay: 0.1s;" id="navbar">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center w-1/2 md:w-1/3">
+                    <a href="#" class="flex items-center group">
+                        <!-- Custom Logo: 'mhr.' Minimal Geometric -->
+                        <span class="brand-icon w-20 h-6 lg:w-24 lg:h-8 group-hover:scale-110 transition-transform duration-300"></span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 lg:space-x-12 items-center justify-center w-1/3">
+                    <a href="#home" class="text-brand-black hover:text-brand-orange nav-link transition-colors">Home</a>
+                    <a href="#about" class="text-brand-black hover:text-brand-orange nav-link transition-colors">About</a>
+                    <a href="#portfolio" class="text-brand-black hover:text-brand-orange nav-link transition-colors">Work</a>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="hidden md:flex justify-end w-1/3">
+                    <a href="#contact" class="btn-outline text-xs lg:text-sm uppercase tracking-wide">Let's talk</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center justify-end w-1/2">
+                    <button id="mobile-menu-btn" class="text-brand-black focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-bg border-t border-gray-200 absolute w-full z-50 shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#home" class="block px-3 py-3 text-base font-medium text-brand-black hover:text-brand-orange">Home</a>
+                <a href="#about" class="block px-3 py-3 text-base font-medium text-brand-black hover:text-brand-orange">About</a>
+                <a href="#portfolio" class="block px-3 py-3 text-base font-medium text-brand-black hover:text-brand-orange">Work</a>
+                <a href="#contact" class="block px-3 py-3 mt-4 border border-brand-black text-center font-medium text-brand-black uppercase tracking-wide">Let's talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex flex-col justify-center pt-24 lg:pt-28 overflow-hidden relative">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-grow flex items-center">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-10 w-full">
+                
+                <!-- Text Content -->
+                <div class="w-full lg:w-[60%] z-10 pt-4 text-center lg:text-left">
+                    <h1 class="text-[1.8rem] sm:text-[2.2rem] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.4rem] font-display font-bold leading-[1.25] tracking-tight text-brand-black uppercase mb-8 opacity-0 animate-slide-up" style="animation-delay: 0.2s;">
+                        HI, I'M <span class="text-brand-orange">MAHATHRU</span>.<br>
+                        A VIDEO EDITOR <span class="star-icon hero-star animate-spin-slow"></span><br>
+                        BLENDING TECH & STORYTELLING<br>
+                        BASED IN <span class="text-brand-orange">VIJAYAWADA</span>
+                    </h1>
+                    
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-y-3 gap-x-2 md:gap-x-3 text-brand-black font-display font-bold uppercase tracking-wide mb-8 text-[10px] sm:text-xs md:text-sm opacity-0 animate-slide-up" style="animation-delay: 0.3s;">
+                        <span>CINEMATIC EDITS</span>
+                        <span class="star-icon w-2.5 h-2.5 md:w-4 md:h-4"></span>
+                        <span>CONTENT CREATION</span>
+                        <span class="star-icon w-2.5 h-2.5 md:w-4 md:h-4"></span>
+                        <span>INDUSTRY-INTEGRATED ECE</span>
+                        <span class="star-icon w-2.5 h-2.5 md:w-4 md:h-4"></span>
+                        <span>TECH</span>
+                    </div>
+
+                    <div class="flex border border-brand-black w-fit h-12 md:h-14 bg-white opacity-0 animate-slide-up mx-auto lg:mx-0" style="animation-delay: 0.4s;">
+                        <a href="#portfolio" class="bg-brand-black text-white px-6 md:px-8 flex items-center justify-center font-medium text-xs md:text-sm hover:bg-gray-800 transition-colors uppercase tracking-wider">
+                            VIEW MY WORK
+                        </a>
+                        <a href="#contact" class="bg-transparent text-brand-black px-6 md:px-8 flex items-center justify-center font-medium text-xs md:text-sm hover:bg-gray-100 transition-colors uppercase tracking-wider border-l border-brand-black">
+                            LET'S TALK
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Image Area -->
+                <div class="w-full lg:w-[40%] flex justify-center lg:justify-end relative mt-8 lg:mt-0 h-full min-h-[350px] sm:min-h-[400px] lg:min-h-[500px] items-center">
+                    
+                    <!-- Image Container: Professional Circle Frame -->
+                    <div class="relative w-full max-w-[320px] sm:max-w-[380px] aspect-square rounded-full border-[3px] border-brand-black bg-white overflow-hidden flex justify-center z-10 opacity-0 animate-scale-in transition-transform duration-300 hover:-translate-y-2 hover:shadow-[10px_10px_0_0_#F04C35] shadow-[6px_6px_0_0_#111111] md:shadow-[8px_8px_0_0_#111111]" style="animation-delay: 0.5s;">
+                        
+                        <!-- Background orange dotted pattern (Moved INSIDE the circle) -->
+                        <div class="absolute w-[110%] sm:w-[120%] aspect-square top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0">
+                            <!-- Dotted grid design behind the portrait -->
+                            <div class="w-full h-full bg-transparent opacity-80" style="background-image: radial-gradient(circle, #F04C35 2.5px, transparent 2.5px); background-size: 16px 16px; background-position: center;"></div>
+                        </div>
+
+                        <!-- The profile image: scaled and shifted to crop perfectly at the waist -->
+                        <img src="Mahathru.png" 
+                             alt="Mahathru Reddipalli" 
+                             class="absolute top-[4%] left-1/2 -translate-x-1/2 w-[125%] max-w-none h-auto object-contain grayscale z-10">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Angled Marquee Banner -->
+        <div class="marquee-container opacity-0 animate-slide-up" style="animation-delay: 0.7s;">
+            <div class="marquee-content animate-marquee">
+                <!-- Group 1 -->
+                <div class="marquee-item">CINEMATIC EDITS <span class="star-icon w-4 h-4 md:w-5 md:h-5 mx-6 md:mx-10"></span></div>
+                <div class="marquee-item">STORYTELLING <span class="star-icon w-4 h-4 md:w-5 md:h-5 mx-6 md:mx-10"></span></div>
+                <div class="marquee-item">VIDEO EDITING <span class="star-icon w-4 h-4 md:w-5 md:h-5 mx-6 md:mx-10"></span></div>
+                <div class="marquee-item">IOT & EMBEDDED <span class="star-icon w-4 h-4 md:w-5 md:h-5 mx-6 md:mx-10"></span></div>
+                <div class="marquee-item">COLOR GRADING <span class="star-icon w-4 h-4 md:w-5 md:h-5 mx-6 md:mx-10"></span></div>
+                <div class="marquee-item">CONTENT CREATION <span class="star-icon w-4 h-4 md:w-5 md:h-5 mx-6 md:mx-10"></span></div>
+                
+                <!-- Group 2 (Duplicate for seamless loop) -->
+                <div class="marquee-item">CINEMATIC EDITS <span class="star-icon w-4 h-4 md:w-5 md:h-5 mx-6 md:mx-10"></span></div>
+                <div class="marquee-item">STORYTELLING <span class="star-icon w-4 h-4 md:w-5 md:h-5 mx-6 md:mx-10"></span></div>
+                <div class="marquee-item">VIDEO EDITING <span class="star-icon w-4 h-4 md:w-5 md:h-5 mx-6 md:mx-10"></span></div>
+                <div class="marquee-item">IOT & EMBEDDED <span class="star-icon w-4 h-4 md:w-5 md:h-5 mx-6 md:mx-10"></span></div>
+                <div class="marquee-item">COLOR GRADING <span class="star-icon w-4 h-4 md:w-5 md:h-5 mx-6 md:mx-10"></span></div>
+                <div class="marquee-item">CONTENT CREATION <span class="star-icon w-4 h-4 md:w-5 md:h-5 mx-6 md:mx-10"></span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 lg:py-32">
+        <div class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 mb-16">
+                <!-- Left: Title & Short Intro -->
+                <div class="reveal">
+                    <h3 class="text-sm font-display font-bold tracking-widest uppercase mb-4 text-brand-black flex items-center">
+                        ABOUT <span class="star-icon w-3 h-3 mx-2"></span> ME
+                    </h3>
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight tracking-tight text-brand-black">
+                        I’m an Industry-Integrated ECE student & creative editor blending tech with storytelling.
+                    </h2>
+                </div>
+
+                <!-- Right: Description -->
+                <div class="pt-2 reveal delay-100">
+                    <p class="text-lg md:text-xl font-medium text-brand-black mb-6 leading-snug">
+                        I’m Mahathru Reddipalli, an Industry-Integrated ECE student passionate about cinematic video editing, digital storytelling, and technology-driven creativity.
+                    </p>
+                    <p class="text-gray-600 mb-10 text-sm leading-relaxed">
+                        I create engaging reels, montage edits, and social media content while also exploring Embedded Systems, IoT, and AI-based innovations. My goal is to combine creativity and technology to build impactful digital experiences.
+                    </p>
+                    
+                    <div class="grid grid-cols-3 gap-2 sm:gap-4 border-t border-gray-300 pt-6">
+                        <div>
+                            <p class="text-[10px] md:text-xs font-display text-brand-orange uppercase font-bold tracking-wider mb-2">LOCATION</p>
+                            <p class="font-display font-bold text-xs sm:text-sm md:text-lg">Vijayawada</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] md:text-xs font-display text-brand-orange uppercase font-bold tracking-wider mb-2">EDUCATION</p>
+                            <p class="font-display font-bold text-xs sm:text-sm md:text-lg">Industry-Integrated ECE</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] md:text-xs font-display text-brand-orange uppercase font-bold tracking-wider mb-2">FOCUS</p>
+                            <p class="font-display font-bold text-xs sm:text-sm md:text-lg">Video & Tech</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Bar -->
+            <div class="border-2 border-brand-black w-full mx-auto reveal delay-200 bg-white p-6 sm:p-8 md:p-12 transition-transform hover:-translate-y-1">
+                <div class="flex flex-col md:flex-row md:items-start justify-between mb-6">
+                    <div>
+                        <h3 class="text-xl sm:text-2xl md:text-3xl font-display font-bold text-brand-black mb-2">Content Editor & Page Handler</h3>
+                        <p class="text-base sm:text-lg font-medium text-brand-orange">Dhanekula Panchayati</p>
+                    </div>
+                    <span class="mt-4 md:mt-0 inline-block border-2 border-brand-black px-4 py-1 text-xs font-bold uppercase font-display bg-brand-bg tracking-wider w-fit">Experience</span>
+                </div>
+                <p class="text-gray-700 leading-relaxed mb-8 text-sm md:text-base">
+                    Created engaging reels and edits for a college-based Instagram page. Worked on cinematic edits, trend-based content, transitions, and audience-focused storytelling.
+                </p>
+                <div class="flex flex-wrap gap-2 md:gap-3">
+                    <span class="border border-gray-300 px-3 py-1 text-[10px] md:text-xs font-bold uppercase tracking-wider text-gray-600 bg-gray-50">Reel Editing</span>
+                    <span class="border border-gray-300 px-3 py-1 text-[10px] md:text-xs font-bold uppercase tracking-wider text-gray-600 bg-gray-50">Social Media Content</span>
+                    <span class="border border-gray-300 px-3 py-1 text-[10px] md:text-xs font-bold uppercase tracking-wider text-gray-600 bg-gray-50">Trend-Based Editing</span>
+                    <span class="border border-gray-300 px-3 py-1 text-[10px] md:text-xs font-bold uppercase tracking-wider text-gray-600 bg-gray-50">Visual Storytelling</span>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 lg:py-32">
+        <div class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-16 lg:mb-20 reveal">
+                <span class="star-icon section-header-star animate-spin-slow text-brand-orange"></span>
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-brand-black mb-4 tracking-tight">Featured Work</h2>
+                <p class="text-xs font-display font-bold uppercase tracking-widest text-gray-600">PROJECTS & ACCOMPLISHMENTS</p>
+            </div>
+
+            <!-- Project 1 -->
+            <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mb-20 lg:mb-32 reveal">
+                <div class="w-full lg:w-1/2">
+                    <div class="relative aspect-[4/3] bg-gray-200 overflow-hidden group border-2 border-transparent hover:border-brand-black transition-colors">
+                        <!-- Black Tint Overlay -->
+                        <div class="absolute inset-0 bg-black/60 group-hover:bg-black/20 transition-colors duration-700 z-10 pointer-events-none"></div>
+                        <img src="Collegereel.png" alt="College Reel" class="w-full h-full object-cover object-center grayscale transition-transform duration-700 group-hover:scale-105 relative z-0">
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 lg:pl-10">
+                    <span class="inline-block bg-brand-orange text-white text-xs font-display font-bold px-3 py-1 mb-4 lg:mb-6 uppercase tracking-wider">COLLEGE REEL</span>
+                    <h3 class="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-brand-black mb-4 lg:mb-6 leading-tight tracking-tight">
+                        Cinematic College Reel
+                    </h3>
+                    <p class="text-gray-600 mb-6 lg:mb-8 text-sm md:text-base leading-relaxed">
+                        Cinematic college edit featuring smooth, dynamic transitions and strong visual storytelling.
+                    </p>
+                    <a href="https://photos.app.goo.gl/mgYcaC5RhTYxwZfe8" target="_blank" rel="noopener noreferrer" class="font-display font-bold text-sm border-b-2 border-brand-black pb-1 hover:text-brand-orange hover:border-brand-orange transition-colors uppercase tracking-wide">Watch Video</a>
+                </div>
+            </div>
+
+            <!-- Project 2 (Reversed layout) -->
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-8 lg:gap-12 mb-20 lg:mb-32 reveal">
+                <div class="w-full lg:w-1/2">
+                    <div class="relative aspect-[4/3] bg-gray-200 overflow-hidden group border-2 border-transparent hover:border-brand-black transition-colors">
+                        <!-- Black Tint Overlay -->
+                        <div class="absolute inset-0 bg-black/60 group-hover:bg-black/20 transition-colors duration-700 z-10 pointer-events-none"></div>
+                        <img src="montage.png" alt="Montage Edit" class="w-full h-full object-cover object-center grayscale transition-transform duration-700 group-hover:scale-105 relative z-0">
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 lg:pr-10 lg:text-right">
+                    <div class="flex flex-col items-start lg:items-end">
+                        <span class="inline-block bg-brand-orange text-white text-xs font-display font-bold px-3 py-1 mb-4 lg:mb-6 uppercase tracking-wider">MONTAGE</span>
+                        <h3 class="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-brand-black mb-4 lg:mb-6 leading-tight tracking-tight text-left lg:text-right">
+                            Montage Edit
+                        </h3>
+                        <p class="text-gray-600 mb-6 lg:mb-8 text-sm md:text-base leading-relaxed text-left lg:text-right">
+                            High-energy, beat-sync montage perfectly timed to music, focused on audience engagement.
+                        </p>
+                        <a href="https://photos.app.goo.gl/YJYHUoGXWFAmy1w2A" target="_blank" rel="noopener noreferrer" class="font-display font-bold text-sm border-b-2 border-brand-black pb-1 hover:text-brand-orange hover:border-brand-orange transition-colors uppercase tracking-wide">Watch Video</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 reveal">
+                <div class="w-full lg:w-1/2">
+                    <div class="relative aspect-[4/3] bg-gray-200 overflow-hidden group border-2 border-transparent hover:border-brand-black transition-colors">
+                        <!-- Black Tint Overlay -->
+                        <div class="absolute inset-0 bg-black/60 group-hover:bg-black/20 transition-colors duration-700 z-10 pointer-events-none"></div>
+                        <img src="igreel.png" alt="Instagram Reel" class="w-full h-full object-cover object-center grayscale transition-transform duration-700 group-hover:scale-105 relative z-0">
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 lg:pl-10">
+                    <span class="inline-block bg-brand-orange text-white text-xs font-display font-bold px-3 py-1 mb-4 lg:mb-6 uppercase tracking-wider">SOCIAL MEDIA</span>
+                    <h3 class="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-brand-black mb-4 lg:mb-6 leading-tight tracking-tight">
+                        Instagram Reel Edit
+                    </h3>
+                    <p class="text-gray-600 mb-6 lg:mb-8 text-sm md:text-base leading-relaxed">
+                        Trend-focused short-form content strategically optimized for maximum audience retention and impact.
+                    </p>
+                    <a href="https://photos.app.goo.gl/cfRKXir2C8FQDwtt6" target="_blank" rel="noopener noreferrer" class="font-display font-bold text-sm border-b-2 border-brand-black pb-1 hover:text-brand-orange hover:border-brand-orange transition-colors uppercase tracking-wide">Watch Video</a>
+                </div>
+            </div>
+
+            <!-- See More Link -->
+            <div class="text-center mt-20 lg:mt-28 reveal">
+                <p class="text-brand-black font-display font-bold text-lg md:text-xl">
+                    For more of my works visit 
+                    <a href="https://www.instagram.com/dhanekula_panchayati/" target="_blank" rel="noopener noreferrer" class="text-brand-orange hover:text-brand-black transition-colors border-b-2 border-brand-orange hover:border-brand-black pb-1 ml-1 inline-flex items-center">
+                        <i class="fab fa-instagram mr-2"></i>dhanekula_panchayati
+                    </a>
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Skills & Tech Section -->
+    <section id="skills" class="py-20 lg:py-32 bg-brand-bg">
+        <div class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-12 lg:mb-16 reveal">
+                <span class="star-icon section-header-star animate-spin-slow text-brand-orange"></span>
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-brand-black mb-4 tracking-tight">Skills & Tech</h2>
+                <p class="text-xs font-display font-bold uppercase tracking-widest text-gray-600">TOOLS & CAPABILITIES</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                <!-- Skill 1 -->
+                <div class="service-card reveal">
+                    <h3 class="text-xl md:text-2xl font-display font-bold mb-4 lg:mb-6 text-brand-black border-b border-gray-200 pb-3 md:pb-4">Video Editing</h3>
+                    <ul class="text-gray-700 text-sm md:text-base font-medium space-y-3">
+                        <li class="flex items-center"><i class="fas fa-play text-brand-orange mr-3 text-xs"></i> CapCut</li>
+                        <li class="flex items-center"><i class="fas fa-play text-brand-orange mr-3 text-xs"></i> VN Editor</li>
+                        <li class="flex items-center"><i class="fas fa-play text-brand-orange mr-3 text-xs"></i> DaVinci Resolve</li>
+                    </ul>
+                </div>
+                
+                <!-- Skill 2 -->
+                <div class="service-card reveal delay-100">
+                    <h3 class="text-xl md:text-2xl font-display font-bold mb-4 lg:mb-6 text-brand-black border-b border-gray-200 pb-3 md:pb-4">Cinematic Editing</h3>
+                    <ul class="text-gray-700 text-sm md:text-base font-medium space-y-3">
+                        <li class="flex items-center"><i class="fas fa-film text-brand-orange mr-3 text-xs"></i> Reel Editing</li>
+                        <li class="flex items-center"><i class="fas fa-film text-brand-orange mr-3 text-xs"></i> Beat Sync</li>
+                        <li class="flex items-center"><i class="fas fa-film text-brand-orange mr-3 text-xs"></i> Color Grading</li>
+                    </ul>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="service-card reveal delay-200">
+                    <h3 class="text-xl md:text-2xl font-display font-bold mb-4 lg:mb-6 text-brand-black border-b border-gray-200 pb-3 md:pb-4">Technical</h3>
+                    <ul class="text-gray-700 text-sm md:text-base font-medium space-y-3">
+                        <li class="flex items-center"><i class="fas fa-microchip text-brand-orange mr-3 text-xs"></i> Embedded Systems</li>
+                        <li class="flex items-center"><i class="fas fa-microchip text-brand-orange mr-3 text-xs"></i> IoT</li>
+                        <li class="flex items-center"><i class="fas fa-microchip text-brand-orange mr-3 text-xs"></i> Arduino</li>
+                    </ul>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="service-card reveal delay-300">
+                    <h3 class="text-xl md:text-2xl font-display font-bold mb-4 lg:mb-6 text-brand-black border-b border-gray-200 pb-3 md:pb-4">Tech & Innovation</h3>
+                    <ul class="text-gray-700 text-sm md:text-base font-medium space-y-3">
+                        <li class="flex items-center"><i class="fas fa-robot text-brand-orange mr-3 text-xs"></i> THRUVE Rover</li>
+                        <li class="flex items-center"><i class="fas fa-robot text-brand-orange mr-3 text-xs"></i> AI & IoT Concepts</li>
+                        <li class="flex items-center"><i class="fas fa-robot text-brand-orange mr-3 text-xs"></i> Arduino Projects</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="bg-brand-black text-white py-16 md:py-24">
+        <div class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+             <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-8 md:mb-10 tracking-tight">LET'S CONNECT</h2>
+             
+             <a href="mailto:mahathru11@gmail.com" class="inline-block border-2 border-white px-6 py-3 md:px-8 md:py-4 font-display font-bold hover:bg-white hover:text-brand-black transition-colors mb-12 md:mb-16 text-xs sm:text-sm md:text-base tracking-widest uppercase break-all">
+                 mahathru11@gmail.com
+             </a>
+             
+             <div class="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-6 md:gap-12 mb-16 md:mb-20 text-sm md:text-base font-display font-bold tracking-wide">
+                 <a href="#" class="hover:text-brand-orange transition-colors flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> Vijayawada, India</a>
+                 <a href="https://www.instagram.com/mthru.16/" target="_blank" rel="noopener noreferrer" class="hover:text-brand-orange transition-colors flex items-center"><i class="fab fa-instagram mr-2 text-lg"></i> Instagram</a>
+                 <a href="https://www.linkedin.com/in/mahathru/" target="_blank" rel="noopener noreferrer" class="hover:text-brand-orange transition-colors flex items-center"><i class="fab fa-linkedin mr-2 text-lg"></i> LinkedIn</a>
+             </div>
+             
+             <div class="flex flex-col md:flex-row justify-between items-center border-t border-gray-800 pt-8 text-xs text-gray-500 font-medium tracking-wide uppercase text-center md:text-left gap-4 md:gap-0">
+                 <div class="flex items-center text-white">
+                     <!-- Minimal mhr. brand logo for footer -->
+                     <span class="brand-icon w-16 h-5 mr-2" style="background-color: white;"></span> 
+                 </div>
+                 <div>&copy; 2026 Mahathru Reddipalli. All rights reserved.</div>
+             </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = btn.querySelector('i');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        const mobileLinks = menu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Clone marquee items to ensure smooth infinite scroll without jumps
+        document.addEventListener('DOMContentLoaded', () => {
+            const marquee = document.querySelector('.marquee-content');
+            if(marquee) {
+                const clone = marquee.cloneNode(true);
+                marquee.innerHTML += clone.innerHTML;
+            }
+            
+            // Intersection Observer for scroll animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -100px 0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Stop observing once animated so it doesn't repeat on every scroll
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
